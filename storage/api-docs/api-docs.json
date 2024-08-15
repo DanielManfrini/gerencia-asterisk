@@ -1,0 +1,768 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentação API Softphone",
+        "description": "",
+        "contact": {
+            "name": "Daniel Lopes Manfrini",
+            "email": "analistadev.04@plansul.com.br"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/filas/get": {
+            "get": {
+                "tags": [
+                    "Filas"
+                ],
+                "summary": "Coleta filas.",
+                "operationId": "c152cb2d2588287cbfe3b9bec94012c8",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/FilasGetResponse"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/filas/create": {
+            "post": {
+                "tags": [
+                    "Filas"
+                ],
+                "summary": "Realiza o cadastro da fila.",
+                "operationId": "cd2ff1cef46298a7dc5c9d3767af6933",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FilasCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/filas/edit": {
+            "put": {
+                "tags": [
+                    "Filas"
+                ],
+                "summary": "Realiza a edição da fila.",
+                "operationId": "b31ab1b898e106f8d101a191a8510512",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FilasEditRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/filas/delete": {
+            "delete": {
+                "tags": [
+                    "Filas"
+                ],
+                "summary": "Realiza a edição da fila.",
+                "operationId": "be283e5a056daaed80589be345ee62a8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/ramais/context/get": {
+            "get": {
+                "tags": [
+                    "Contexto"
+                ],
+                "summary": "Coleta os contextos ou o contexto com base no ID.",
+                "operationId": "683f54605e76a9fd9a0a0a83e9e3ab94",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContextGetResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ramais/context/create": {
+            "post": {
+                "tags": [
+                    "Contexto"
+                ],
+                "summary": "Cria um novo contexto no arquivo extentions.conf.",
+                "operationId": "fc320236bebc758b3c5efdd68dbe4d30",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ContextCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/ramais/context/edit": {
+            "put": {
+                "tags": [
+                    "Contexto"
+                ],
+                "summary": "Edita o contexto.",
+                "operationId": "a684796af13e58916759b5de4164388f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ContextEditRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Contexto"
+                ],
+                "summary": "Remove o contexto no arquivo extentions.conf.",
+                "operationId": "fc98c0e297e03f9ece783b1ee89d957d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "ContextId": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "contexto-teste"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/ramais/get": {
+            "get": {
+                "tags": [
+                    "Ramais"
+                ],
+                "summary": "Coleta os ramais ou o ramal com base no ID.",
+                "operationId": "0109282b233f8aa3197c0e1b42d4ffaf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RamalGetResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ramais/create": {
+            "post": {
+                "tags": [
+                    "Ramais"
+                ],
+                "summary": "Realiza o cadastro do ramal com base na matrícula e senha do usuário.",
+                "operationId": "2e362d5ee3c9260c107f9abe9ee0645f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RamalCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/ramais/edit": {
+            "put": {
+                "tags": [
+                    "Ramais"
+                ],
+                "summary": "Realiza a edição do ramal com base na matrícula do usuário.",
+                "operationId": "f03a6e275a9302f1a26593f15a3f4b29",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RamalEditRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Ramais"
+                ],
+                "summary": "Deleta o ramal com base no ID.",
+                "operationId": "fc7431096f77901c9716959ba1ad8f58",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": "125104"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/uras/get": {
+            "get": {
+                "tags": [
+                    "Uras"
+                ],
+                "summary": "Coleta as uras.",
+                "operationId": "cbded271ca0482315fbd87334a08c7f4",
+                "parameters": [
+                    {
+                        "name": "exten",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/UrasGetResponse"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/uras/create": {
+            "post": {
+                "tags": [
+                    "Uras"
+                ],
+                "summary": "Realiza o cadastro da ura.",
+                "operationId": "cbea09ca29e475fcc20e9521aaa6b042",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UrasCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/uras/edit": {
+            "put": {
+                "tags": [
+                    "Uras"
+                ],
+                "summary": "Realiza a edição da ura.",
+                "operationId": "b47096afc8c09134c47faa724496fc8e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UrasEditRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/uras/delete": {
+            "delete": {
+                "tags": [
+                    "Uras"
+                ],
+                "summary": "Realiza a exclusao da ura.",
+                "operationId": "e3b98ca037511a443d193bfc68eff034",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ContextGetResponse": {
+                "properties": {
+                    "ContextId": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "contexto-teste"
+                    }
+                },
+                "type": "object"
+            },
+            "ContextCreateRequest": {
+                "required": [
+                    "ContextId",
+                    "name"
+                ],
+                "properties": {
+                    "ContextId": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "contexto-teste"
+                    }
+                },
+                "type": "object"
+            },
+            "ContextEditRequest": {
+                "required": [
+                    "ContextId",
+                    "name"
+                ],
+                "properties": {
+                    "ContextId": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "contexto-teste"
+                    }
+                },
+                "type": "object"
+            },
+            "FilasGetResponse": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "ativo"
+                    },
+                    "musiconhold": {
+                        "type": "string",
+                        "example": "default"
+                    },
+                    "strategy": {
+                        "type": "string",
+                        "example": "leastrecent"
+                    },
+                    "retry": {
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "FilasCreateRequest": {
+                "required": [
+                    "name",
+                    "musiconhold",
+                    "retry",
+                    "strategy"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "daniel"
+                    },
+                    "musiconhold": {
+                        "type": "string",
+                        "example": "default"
+                    },
+                    "retry": {
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "strategy": {
+                        "type": "string",
+                        "example": "leastrecent"
+                    }
+                },
+                "type": "object"
+            },
+            "FilasEditRequest": {
+                "required": [
+                    "id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "daniel"
+                    },
+                    "musiconhold": {
+                        "type": "string",
+                        "example": "default"
+                    },
+                    "retry": {
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "strategy": {
+                        "type": "string",
+                        "example": "leastrecent"
+                    }
+                },
+                "type": "object"
+            },
+            "RamalGetResponse": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "login": {
+                        "type": "string",
+                        "example": "user123"
+                    },
+                    "max_contacts": {
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "transport": {
+                        "type": "string",
+                        "example": "UDP"
+                    },
+                    "allow": {
+                        "type": "string",
+                        "example": "all"
+                    },
+                    "context": {
+                        "type": "string",
+                        "example": "default"
+                    }
+                },
+                "type": "object"
+            },
+            "RamalCreateRequest": {
+                "required": [
+                    "login",
+                    "senha"
+                ],
+                "properties": {
+                    "login": {
+                        "type": "string",
+                        "example": "user123"
+                    },
+                    "senha": {
+                        "type": "string",
+                        "example": "password123"
+                    },
+                    "max_contacts": {
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "transport": {
+                        "type": "string",
+                        "example": "UDP"
+                    },
+                    "allow": {
+                        "type": "string",
+                        "example": "all"
+                    },
+                    "context": {
+                        "type": "string",
+                        "example": "default"
+                    }
+                },
+                "type": "object"
+            },
+            "RamalEditRequest": {
+                "required": [
+                    "id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "125104"
+                    },
+                    "login": {
+                        "type": "string",
+                        "example": "user123"
+                    },
+                    "senha": {
+                        "type": "string",
+                        "example": "password123"
+                    },
+                    "max_contacts": {
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "transport": {
+                        "type": "string",
+                        "example": "UDP"
+                    },
+                    "allow": {
+                        "type": "string",
+                        "example": "all"
+                    },
+                    "context": {
+                        "type": "string",
+                        "example": "default"
+                    }
+                },
+                "type": "object"
+            },
+            "UrasGetResponse": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "context": {
+                        "type": "string",
+                        "example": "ura"
+                    },
+                    "exten": {
+                        "type": "any",
+                        "example": "3000,switch-2"
+                    },
+                    "priority": {
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "app": {
+                        "type": "string",
+                        "example": 1
+                    },
+                    "appdata": {
+                        "type": "string",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "UrasCreateRequest": {
+                "required": [
+                    "context",
+                    "exten",
+                    "priority",
+                    "app",
+                    "appdata"
+                ],
+                "properties": {
+                    "context": {
+                        "type": "string",
+                        "example": "ura"
+                    },
+                    "exten": {
+                        "type": "any",
+                        "example": "3000,switch-2"
+                    },
+                    "priority": {
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "app": {
+                        "type": "string",
+                        "example": 1
+                    },
+                    "appdata": {
+                        "type": "string",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "UrasEditRequest": {
+                "required": [
+                    "id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "context": {
+                        "type": "string",
+                        "example": "ura"
+                    },
+                    "exten": {
+                        "type": "any",
+                        "example": "3000,switch-2"
+                    },
+                    "priority": {
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "app": {
+                        "type": "string",
+                        "example": 1
+                    },
+                    "appdata": {
+                        "type": "string",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

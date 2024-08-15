@@ -1,0 +1,63 @@
+
+/**
+ * @OA\POST(
+ *     path="/api/testing/v1/tester/testUsers",
+ *     summary="Create a Test",
+ *     tags={"TEST"},
+ *     @OA\RequestBody(
+ *        required = true,
+ *        description = "Data packet for Test",
+ *        @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(
+ *                property="testItems",
+ *                type="array",
+ *                example={{
+ *                  "firstName": "Bob",
+ *                  "lastName": "Fanger",
+ *                  "company": "Triple",
+ *                  "id": "808",
+ *                }, {
+ *                  "firstName": "",
+ *                  "lastName": "",
+ *                  "company": "",
+ *                  "id": ""
+ *                }},
+ *                @OA\Items(
+ *                      @OA\Property(
+ *                         property="firstName",
+ *                         type="string",
+ *                         example=""
+ *                      ),
+ *                      @OA\Property(
+ *                         property="lastName",
+ *                         type="string",
+ *                         example=""
+ *                      ),
+ *                      @OA\Property(
+ *                         property="companyId",
+ *                         type="string",
+ *                         example=""
+ *                      ),
+ *                      @OA\Property(
+ *                         property="accountNumber",
+ *                         type="number",
+ *                         example=""
+ *                      ),
+ *                      @OA\Property(
+ *                         property="netPay",
+ *                         type="money",
+ *                         example=""
+ *                      ),
+ *                ),
+ *             ),
+ *        ),
+ *     ),
+ *
+ *
+ *     @OA\Response(
+ *        response="200",
+ *        description="Successful response",
+ *     ),
+ * )
+ */
